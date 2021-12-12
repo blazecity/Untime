@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SingleTrackerView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.scenePhase) var scenePhase
+    
     @ObservedObject var task: TaskModel
     var managedTask: Task
     @ObservedObject var timer = TimerManager()
@@ -16,19 +18,14 @@ struct SingleTrackerView: View {
     @ObservedObject var refresherWrapper: RefresherWrapper
     @State var color = CustomColor(rgb: [220, 220, 220])
     @State var foregroundColor = Color.black
+    @State var inactiveDate = Date()
     
     var body: some View {
         HStack(alignment: .center) {
             Button {
                 toggleButton()
                 if buttonPlay == "play" {
-                    task.seconds = Int(timer.time)
-                    managedTask.seconds = Int32(timer.time)
-                    do {
-                        try viewContext.save()
-                    } catch {
-                        print(error.localizedDescription)
-                    }
+                    saveTime()
                 }
             } label: {
                 Image(systemName: buttonPlay)
@@ -63,6 +60,15 @@ struct SingleTrackerView: View {
         .padding(EdgeInsets(top: 2, leading: 5, bottom: 2, trailing: 5))
         .background(color)
         .cornerRadius(5)
+        .onChange(of: scenePhase) { newPhase in
+            if newPhase == .background {
+                inactiveDate = Date()
+            } else if newPhase == .active {
+                let diff = Int(Date().timeIntervalSince(inactiveDate))
+                timer.addSeconds(increase: diff)
+                saveTime()
+            }
+        }
     }
     
     func toggleButton() {
@@ -76,6 +82,16 @@ struct SingleTrackerView: View {
             foregroundColor = .black
             buttonPlay = "play"
             timer.interrupt()
+        }
+    }
+    
+    func saveTime() {
+        task.seconds = Int(timer.time)
+        managedTask.seconds = Int32(timer.time)
+        do {
+            try viewContext.save()
+        } catch {
+            print(error.localizedDescription)
         }
     }
 }

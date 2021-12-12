@@ -46,6 +46,11 @@ class TimerManager: ObservableObject {
         timer.invalidate()
     }
     
+    func addSeconds(increase: Int) {
+        self.seconds += increase
+        self.time += increase
+    }
+    
     static func formatTime(newValue: Int) -> String {
         let intTime = newValue
         let (hours, minutes, seconds) = getHoursMinutesSeconds(seconds: intTime)
