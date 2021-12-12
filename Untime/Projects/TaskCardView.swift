@@ -14,15 +14,9 @@ struct TaskCardView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
             Text(task.name!).bold()
-            Text(formatDate(date: task.date!)).font(.system(size: 10))
+            Text(Formatter.formatDate(date: task.date!)).font(.system(size: 10))
             Text(TimerManager.formatTime(newValue: Int(task.seconds))).font(.system(size: 10))
         }
-    }
-    
-    func formatDate(date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM.yyyy"
-        return formatter.string(from: date)
     }
 }
 

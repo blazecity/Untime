@@ -14,7 +14,6 @@ struct ReportingView: View {
     @State private var byDateChecked = true
     @State private var selectionTagProject = 0
     @State private var selectionDate = 0
-    @State private var selectedTag = 0
     
     var body: some View {
         NavigationView() {
@@ -37,23 +36,27 @@ struct ReportingView: View {
                             Text("Tag").tag(1)
                         }
                         .pickerStyle(.segmented)
-                        
-                        if selectionTagProject == 1 {
-                            Picker("Selected tag", selection: $selectedTag) {
-                                let tags = fetchTags()
-                                ForEach(tags.indices) { index in
-                                    let tagModel = TagModel.convertManagedTag(mTag: tags[index])
-                                    ProjectTagView(tag: tagModel).tag(index)
-                                }
-                            }
-                        }
                     }
                 }
                 .padding()
                 
+                let taskAggregator = TaskAggregator(data: fetchTasks())
+                let aggregatedTasks = taskAggregator.aggregate(dateSelectorLevel: DateSelectorLevel(rawValue: selectionDate)!, aggregationSelector: AggregationSelector(rawValue: selectionTagProject)!)
+                let keys: [String] = Array(aggregatedTasks.keys).sorted {$0.localizedStandardCompare($1) == .orderedDescending}
+            
                 List {
-                    ForEach(fetchTasks()) { task in
-                        Text(task.project!.name!)
+                    ForEach(keys, id: \.self) { key in
+                        let value = aggregatedTasks[key]!
+                        let subKeys = Array(value.keys).sorted {$0.localizedStandardCompare($1) == .orderedDescending}
+                        Section(key) {
+                            ForEach(subKeys, id: \.self) { subKey in
+                                HStack {
+                                    Text(subKey)
+                                    Spacer()
+                                    Text(value[subKey]!.description)
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -81,7 +84,6 @@ struct ReportingView: View {
             let fetchRequest : NSFetchRequest<Tag> = Tag.fetchRequest()
             fetchRequest.returnsObjectsAsFaults = false
             let fetchedTags = try viewContext.fetch(fetchRequest)
-            print(fetchedTags)
             return fetchedTags
         } catch {
             print ("fetch tags failed", error)

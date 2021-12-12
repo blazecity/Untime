@@ -69,7 +69,7 @@ struct ProjectView: View {
                             print(error.localizedDescription)
                         }
                     } label: {
-                        Text("Delete project").foregroundColor(.red)
+                        Text("Delete project").foregroundColor(.red).bold()
                     }
                     
                     Section("Tasks") {

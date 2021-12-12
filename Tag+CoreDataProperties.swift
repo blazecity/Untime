@@ -40,3 +40,7 @@ extension Tag {
 extension Tag : Identifiable {
 
 }
+
+extension Tag : Summable {
+    
+}

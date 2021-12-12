@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A35E58927664ACA00B2C80C /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A35E58827664ACA00B2C80C /* Formatter.swift */; };
 		3A4CB0CC275CE57B00B8FA2E /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4CB0CB275CE57B00B8FA2E /* ProjectModel.swift */; };
 		3A4CB0CE275CFE3E00B8FA2E /* TagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4CB0CD275CFE3E00B8FA2E /* TagModel.swift */; };
 		3A4CB0D0275CFE8A00B8FA2E /* ProjectTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4CB0CF275CFE8A00B8FA2E /* ProjectTagView.swift */; };
@@ -62,6 +63,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A35E58827664ACA00B2C80C /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		3A4CB0CB275CE57B00B8FA2E /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
 		3A4CB0CD275CFE3E00B8FA2E /* TagModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagModel.swift; sourceTree = "<group>"; };
 		3A4CB0CF275CFE8A00B8FA2E /* ProjectTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTagView.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				3A4CB0E6275EC32D00B8FA2E /* TappingOutside.swift */,
 				3AC89E6D276036A90069ED57 /* CancelSaveView.swift */,
 				3A4E58E9276425690064A5BD /* TaskAggregator.swift */,
+				3A35E58827664ACA00B2C80C /* Formatter.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				3A4CB176275F89FB00B8FA2E /* Project+CoreDataProperties.swift in Sources */,
 				3AF0F7CF2760D36E00A54748 /* SingleTagSelectionView.swift in Sources */,
 				3AF0F7CD2760BDF300A54748 /* TColor+CoreDataProperties.swift in Sources */,
+				3A35E58927664ACA00B2C80C /* Formatter.swift in Sources */,
 				3A4CB0D8275DDEF700B8FA2E /* ReportingEntryView.swift in Sources */,
 				3A4CB0D6275DDE4B00B8FA2E /* ReportingView.swift in Sources */,
 				3AF0F7DB2761075800A54748 /* Task+CoreDataProperties.swift in Sources */,
