@@ -63,6 +63,7 @@ struct SingleTrackerView: View {
         .onChange(of: scenePhase) { newPhase in
             if newPhase == .background {
                 inactiveDate = Date()
+                saveTime()
             } else if newPhase == .active {
                 let diff = Int(Date().timeIntervalSince(inactiveDate))
                 timer.addSeconds(increase: diff)
