@@ -140,7 +140,6 @@ struct ProjectView: View {
             let fetchRequest : NSFetchRequest<Task> = Task.fetchRequest()
             fetchRequest.predicate = NSPredicate(format: "project = %@ AND isFinished = 1", mProject)
             let fetchedTasks = try viewContext.fetch(fetchRequest)
-            print(fetchedTasks)
             return fetchedTasks
         } catch {
             print ("fetch task failed", error)

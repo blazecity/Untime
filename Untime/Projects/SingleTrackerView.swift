@@ -14,23 +14,20 @@ struct SingleTrackerView: View {
     @ObservedObject var task: TaskModel
     var managedTask: Task
     @ObservedObject var timer = TimerManager()
-    @State var buttonPlay = "play"
     @ObservedObject var refresherWrapper: RefresherWrapper
-    @State var color = CustomColor(rgb: [220, 220, 220])
-    @State var foregroundColor = Color.black
     @State var inactiveDate = Date()
     
     var body: some View {
         HStack(alignment: .center) {
             Button {
                 toggleButton()
-                if buttonPlay == "play" {
+                if !managedTask.running {
                     saveTime()
                 }
             } label: {
-                Image(systemName: buttonPlay)
+                Image(systemName: managedTask.running ? "pause": "play")
                     .font(Font.title.weight(.medium))
-                    .foregroundColor(foregroundColor)
+                    .foregroundColor(managedTask.running ? .white : .black)
                     .padding(.trailing, 2)
             }
             
@@ -46,42 +43,48 @@ struct SingleTrackerView: View {
             } label: {
                 Image(systemName: ("stop"))
                     .font(Font.title.weight(.medium))
-                    .foregroundColor(foregroundColor)
+                    .foregroundColor(managedTask.running ? .white : .black)
                     .padding(.trailing, 2)
             }
             
             VStack(alignment: .leading) {
-                CustomText(text: $timer.formattedTime, size: 15, bold: true, color: foregroundColor)
-                CustomText(text: $task.description, size: 12, color: foregroundColor).lineLimit(1)
+                CustomText(text: $timer.formattedTime, size: 15, bold: true, color: managedTask.running ? .white : .black)
+                CustomText(text: $task.description, size: 12, color: managedTask.running ? .white : .black).lineLimit(1)
             }
             .padding(2)
         }
         .frame(minWidth: 140, maxWidth: 160, alignment: .leading)
         .padding(EdgeInsets(top: 2, leading: 5, bottom: 2, trailing: 5))
-        .background(color)
+        .background(managedTask.running ? CustomColor(rgb: [44, 54, 79]) : CustomColor(rgb: [220, 220, 220]))
         .cornerRadius(5)
         .onChange(of: scenePhase) { newPhase in
+            print(newPhase)
             if newPhase == .background {
                 inactiveDate = Date()
+                managedTask.lastActive = inactiveDate
                 saveTime()
             } else if newPhase == .active {
-                let diff = Int(Date().timeIntervalSince(inactiveDate))
-                timer.addSeconds(increase: diff)
+                if managedTask.running {
+                    let diff = Int(Date().timeIntervalSince(inactiveDate))
+                    timer.addSeconds(increase: diff)
+                    saveTime()
+                }
+            }
+        }
+        .onDisappear {
+            if managedTask.running {
+                managedTask.lastActive = Date()
                 saveTime()
             }
         }
     }
     
     func toggleButton() {
-        if buttonPlay == "play" {
-            color = CustomColor(rgb: [44, 54, 79])
-            foregroundColor = .white
-            buttonPlay = "pause"
+        if !managedTask.running {
+            managedTask.running = true
             timer.start()
         } else {
-            color = CustomColor(rgb: [220, 220, 220])
-            foregroundColor = .black
-            buttonPlay = "play"
+            managedTask.running = false
             timer.interrupt()
         }
     }

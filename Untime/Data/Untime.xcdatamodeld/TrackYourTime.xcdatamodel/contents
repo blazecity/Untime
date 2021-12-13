@@ -21,7 +21,9 @@
     <entity name="Task" representedClassName=".Task" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="isFinished" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="lastActive" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="running" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="seconds" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="tasks" inverseEntity="Project"/>
     </entity>
@@ -36,7 +38,7 @@
     <elements>
         <element name="Project" positionX="-9" positionY="36" width="128" height="104"/>
         <element name="Tag" positionX="0" positionY="72" width="128" height="89"/>
-        <element name="Task" positionX="-9" positionY="63" width="128" height="104"/>
+        <element name="Task" positionX="-9" positionY="63" width="128" height="134"/>
         <element name="TColor" positionX="0" positionY="90" width="128" height="119"/>
     </elements>
 </model>

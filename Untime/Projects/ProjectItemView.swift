@@ -47,7 +47,13 @@ struct ProjectItemView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             ForEach(TaskWrapper.getCollectionFromFetchingData(tasks: managedProject.tasks!, filter: .unfinished)) {task in
-                                SingleTrackerView(task: task.task, managedTask: task.boundTask, timer: TimerManager(time: Int(task.boundTask.seconds)), refresherWrapper: refresherWrapper)
+                                
+                                let managedTask = task.boundTask
+                                let diff = managedTask.running ? Int(Date().timeIntervalSince(managedTask.lastActive!)) : 0
+                                
+                                let timerManager = TimerManager(time: Int(task.boundTask.seconds) + diff, running: task.boundTask.running)
+                                                                
+                                SingleTrackerView(task: task.task, managedTask: managedTask, timer: timerManager, refresherWrapper: refresherWrapper)
                             }
                         }
                     }

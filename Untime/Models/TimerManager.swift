@@ -25,14 +25,17 @@ class TimerManager: ObservableObject {
     var timer = Timer()
     
     convenience init() {
-        self.init(time: 0)
+        self.init(time: 0, running: false)
     }
     
-    init(time: Int) {
+    init(time: Int, running: Bool) {
         self.time = time
         self._seconds = time
         self.formattedTime = "00:00:00"
         self.seconds = time
+        if running {
+            self.start()
+        }
     }
     
     func start() {

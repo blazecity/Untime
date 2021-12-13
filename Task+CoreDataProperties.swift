@@ -19,7 +19,9 @@ extension Task {
     @NSManaged public var name: String?
     @NSManaged public var seconds: Int32
     @NSManaged public var date: Date?
+    @NSManaged public var lastActive: Date?
     @NSManaged public var isFinished: Bool
+    @NSManaged public var running: Bool
     @NSManaged public var project: Project?
 
 }
