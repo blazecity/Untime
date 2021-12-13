@@ -13,6 +13,8 @@ class TaskModel: ObservableObject, Identifiable {
     @Published var isFinished: Bool
     @Published var date: Date
     @Published var time: Date
+    @Published var lastActive: Date
+    @Published var running: Bool
     
     convenience init() {
         self.init(description: "")
@@ -34,6 +36,8 @@ class TaskModel: ObservableObject, Identifiable {
         self.isFinished = isFinished
         self.date = date
         self.time = time
+        self.lastActive = Date()
+        self.running = false
     }
     
     static func getCollectionFromFetchingData(tasks: NSSet, filter: TaskFilter = .all) -> [TaskModel] {

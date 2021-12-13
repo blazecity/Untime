@@ -54,6 +54,8 @@ struct TaskView: View {
             mTask.name = task.description
             mTask.isFinished = task.isFinished
             mTask.date = task.date
+            mTask.running = task.running
+            mTask.lastActive = task.lastActive
             if isNewTask {
                 managedProject.addToTasks(mTask)
                 mTask.project = managedProject

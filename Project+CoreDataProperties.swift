@@ -19,6 +19,7 @@ extension Project {
     @NSManaged public var name: String?
     @NSManaged public var id: String?
     @NSManaged public var desc: String?
+    @NSManaged public var active: Bool
     @NSManaged public var tags: NSSet?
     @NSManaged public var tasks: NSSet?
 

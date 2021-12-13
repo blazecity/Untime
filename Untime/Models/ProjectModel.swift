@@ -17,6 +17,7 @@ class ProjectModel: Identifiable, ObservableObject {
     @Published var tasks: [TaskModel]
     @Published var projectId: String
     @Published var description: String
+    @Published var active: Bool
     
     init() {
         self.projectTitle = ""
@@ -24,6 +25,7 @@ class ProjectModel: Identifiable, ObservableObject {
         self.description = ""
         self.tags = []
         self.tasks = []
+        self.active = true
     }
     
     init(projectTitle: String, tags: [TagModel], tasks: [TaskModel], projectId: String, description: String) {
@@ -32,6 +34,7 @@ class ProjectModel: Identifiable, ObservableObject {
         self.tasks = tasks
         self.projectId = projectId
         self.description = description
+        self.active = true
     }
     
     static func convertManagedProject(project: Project) -> ProjectModel {
@@ -46,6 +49,7 @@ class ProjectModel: Identifiable, ObservableObject {
         newProjectModel.projectTitle = name
         newProjectModel.projectId = id
         newProjectModel.description = desc
+        newProjectModel.active = project.active
         newProjectModel.tags = TagModel.getCollectionFromFetchingData(tags: tags)
         newProjectModel.tasks = TaskModel.getCollectionFromFetchingData(tasks: tasks)
         

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Project" representedClassName=".Project" syncable="YES">
+        <attribute name="active" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="desc" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
@@ -36,7 +37,7 @@
         <relationship name="tagFontColor" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tag" inverseName="fontColor" inverseEntity="Tag"/>
     </entity>
     <elements>
-        <element name="Project" positionX="-9" positionY="36" width="128" height="104"/>
+        <element name="Project" positionX="-9" positionY="36" width="128" height="119"/>
         <element name="Tag" positionX="0" positionY="72" width="128" height="89"/>
         <element name="Task" positionX="-9" positionY="63" width="128" height="134"/>
         <element name="TColor" positionX="0" positionY="90" width="128" height="119"/>

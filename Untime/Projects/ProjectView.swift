@@ -72,6 +72,13 @@ struct ProjectView: View {
                         Text("Delete project").foregroundColor(.red).bold()
                     }
                     
+                    Button {
+                        project.active.toggle()
+                    } label: {
+                        Text(project.active ? "Archive project" : "Reactivate project").bold()
+                    }
+
+                    
                     Section("Tasks") {
                         List {
                             let taskList = fetchTasks(mProject: managedProject!)
@@ -120,6 +127,7 @@ struct ProjectView: View {
             mProject.name = project.projectTitle
             mProject.id = project.projectId
             mProject.desc = project.description
+            mProject.active = project.active
             for selectedTag in selectedTags {
                 if selectedTag.isSelected {
                     mProject.addToTags(selectedTag.boundTag)
