@@ -10,6 +10,7 @@ import CoreData
 
 struct ProjectView: View {
     @Environment(\.managedObjectContext) private var viewContext
+    
     var title = ""
     @ObservedObject var project = ProjectModel()
     @Binding var modal: Bool
@@ -17,6 +18,7 @@ struct ProjectView: View {
     var editMode = false
     var managedProject: Project?
     @StateObject var refresherWrapper = RefresherWrapper()
+    @State var showAlert = false
     
     var body: some View {
         VStack {
@@ -25,8 +27,15 @@ struct ProjectView: View {
                     modal.toggle()
                 } saveAction: {
                     let newProject = Project(context: viewContext)
-                    setProjectInfo(mProject: newProject)
-                    modal.toggle()
+                    let validationSuccessful = saveProject(mProject: newProject)
+                    if validationSuccessful {
+                        modal.toggle()
+                    }
+                }
+                .alert("Please fill out all text fields", isPresented: $showAlert) {
+                    Button("Ok", role: .cancel) {
+                        
+                    }
                 }
             }
             
@@ -73,7 +82,9 @@ struct ProjectView: View {
                     }
                     
                     Button {
+                        refresherWrapper.refresh.toggle()
                         project.active.toggle()
+                        
                     } label: {
                         Text(project.active ? "Archive project" : "Reactivate project").bold()
                     }
@@ -113,7 +124,10 @@ struct ProjectView: View {
         }
         .onDisappear {
             if editMode {
-                setProjectInfo(mProject: managedProject!)
+                let validationSuccessful = saveProject(mProject: managedProject!)
+                if !validationSuccessful {
+                    resetProject(mProject: managedProject!)
+                }
             }
         }
         
@@ -122,7 +136,12 @@ struct ProjectView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
     
-    func setProjectInfo(mProject: Project) {
+    func saveProject(mProject: Project) -> Bool {
+        guard StringValidator.validate(strArr: [project.projectTitle, project.projectId, project.description]) else {
+            showAlert = true
+            return false
+        }
+        
         do {
             mProject.name = project.projectTitle
             mProject.id = project.projectId
@@ -140,7 +159,16 @@ struct ProjectView: View {
             try viewContext.save()
         } catch {
             print(error.localizedDescription)
+            return false
         }
+        
+        return true
+    }
+    
+    func resetProject(mProject: Project) {
+        project.projectTitle = mProject.name!
+        project.projectId = mProject.id!
+        project.description = mProject.desc!
     }
     
     func fetchTasks(mProject: Project) -> [Task] {

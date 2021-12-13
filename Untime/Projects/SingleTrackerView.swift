@@ -1,12 +1,6 @@
-//
-//  SingleTrackerView.swift.swift
-//  TrackYourTime
-//
-//  Created by Jan Baumann on 06.12.21.
-//
-
 import SwiftUI
 
+/// SingeTrackerView represents a timer card on a ProjectItemView.
 struct SingleTrackerView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.scenePhase) var scenePhase

@@ -12,7 +12,6 @@
 		3A4CB0CE275CFE3E00B8FA2E /* TagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4CB0CD275CFE3E00B8FA2E /* TagModel.swift */; };
 		3A4CB0D0275CFE8A00B8FA2E /* ProjectTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4CB0CF275CFE8A00B8FA2E /* ProjectTagView.swift */; };
 		3A4CB0D6275DDE4B00B8FA2E /* ReportingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4CB0D5275DDE4B00B8FA2E /* ReportingView.swift */; };
-		3A4CB0D8275DDEF700B8FA2E /* ReportingEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4CB0D7275DDEF700B8FA2E /* ReportingEntryView.swift */; };
 		3A4CB0DC275DF4C200B8FA2E /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4CB0DB275DF4C200B8FA2E /* TimerManager.swift */; };
 		3A4CB0DE275EA41E00B8FA2E /* SingleTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4CB0DD275EA41E00B8FA2E /* SingleTrackerView.swift */; };
 		3A4CB0E1275EA6AB00B8FA2E /* CustomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4CB0E0275EA6AB00B8FA2E /* CustomText.swift */; };
@@ -26,6 +25,7 @@
 		3A4E58E427633BE40064A5BD /* TaskFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4E58E327633BE40064A5BD /* TaskFilter.swift */; };
 		3A4E58E627633CDE0064A5BD /* TaskCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4E58E527633CDE0064A5BD /* TaskCardView.swift */; };
 		3A4E58EA276425690064A5BD /* TaskAggregator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4E58E9276425690064A5BD /* TaskAggregator.swift */; };
+		3A779F882767E53500CFD5CE /* StringValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A779F872767E53500CFD5CE /* StringValidator.swift */; };
 		3A989D99275411920055FBAA /* UntimeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A989D98275411920055FBAA /* UntimeApp.swift */; };
 		3A989D9B275411920055FBAA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A989D9A275411920055FBAA /* ContentView.swift */; };
 		3A989D9D275411930055FBAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A989D9C275411930055FBAA /* Assets.xcassets */; };
@@ -68,7 +68,6 @@
 		3A4CB0CD275CFE3E00B8FA2E /* TagModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagModel.swift; sourceTree = "<group>"; };
 		3A4CB0CF275CFE8A00B8FA2E /* ProjectTagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTagView.swift; sourceTree = "<group>"; };
 		3A4CB0D5275DDE4B00B8FA2E /* ReportingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportingView.swift; sourceTree = "<group>"; };
-		3A4CB0D7275DDEF700B8FA2E /* ReportingEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportingEntryView.swift; sourceTree = "<group>"; };
 		3A4CB0DB275DF4C200B8FA2E /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		3A4CB0DD275EA41E00B8FA2E /* SingleTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTrackerView.swift; sourceTree = "<group>"; };
 		3A4CB0E0275EA6AB00B8FA2E /* CustomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomText.swift; sourceTree = "<group>"; };
@@ -82,6 +81,7 @@
 		3A4E58E327633BE40064A5BD /* TaskFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFilter.swift; sourceTree = "<group>"; };
 		3A4E58E527633CDE0064A5BD /* TaskCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCardView.swift; sourceTree = "<group>"; };
 		3A4E58E9276425690064A5BD /* TaskAggregator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskAggregator.swift; sourceTree = "<group>"; };
+		3A779F872767E53500CFD5CE /* StringValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringValidator.swift; sourceTree = "<group>"; };
 		3A989D95275411920055FBAA /* Untime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Untime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A989D98275411920055FBAA /* UntimeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UntimeApp.swift; sourceTree = "<group>"; };
 		3A989D9A275411920055FBAA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -162,7 +162,6 @@
 			isa = PBXGroup;
 			children = (
 				3A4CB0D5275DDE4B00B8FA2E /* ReportingView.swift */,
-				3A4CB0D7275DDEF700B8FA2E /* ReportingEntryView.swift */,
 			);
 			path = Reporting;
 			sourceTree = "<group>";
@@ -176,6 +175,7 @@
 				3AC89E6D276036A90069ED57 /* CancelSaveView.swift */,
 				3A4E58E9276425690064A5BD /* TaskAggregator.swift */,
 				3A35E58827664ACA00B2C80C /* Formatter.swift */,
+				3A779F872767E53500CFD5CE /* StringValidator.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -362,6 +362,7 @@
 				3AC89E2A27601DCD0069ED57 /* ProjectView.swift in Sources */,
 				3A4CB0CE275CFE3E00B8FA2E /* TagModel.swift in Sources */,
 				3AF23F21275C30D300772D8B /* ProjectsView.swift in Sources */,
+				3A779F882767E53500CFD5CE /* StringValidator.swift in Sources */,
 				3A4CB0D0275CFE8A00B8FA2E /* ProjectTagView.swift in Sources */,
 				3A4CB0E1275EA6AB00B8FA2E /* CustomText.swift in Sources */,
 				3A4CB0E7275EC32D00B8FA2E /* TappingOutside.swift in Sources */,
@@ -384,7 +385,6 @@
 				3AF0F7CF2760D36E00A54748 /* SingleTagSelectionView.swift in Sources */,
 				3AF0F7CD2760BDF300A54748 /* TColor+CoreDataProperties.swift in Sources */,
 				3A35E58927664ACA00B2C80C /* Formatter.swift in Sources */,
-				3A4CB0D8275DDEF700B8FA2E /* ReportingEntryView.swift in Sources */,
 				3A4CB0D6275DDE4B00B8FA2E /* ReportingView.swift in Sources */,
 				3AF0F7DB2761075800A54748 /* Task+CoreDataProperties.swift in Sources */,
 				3A4CB156275F860C00B8FA2E /* Untime.xcdatamodeld in Sources */,
@@ -552,6 +552,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -583,6 +584,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;

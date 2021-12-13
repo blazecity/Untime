@@ -10,6 +10,7 @@ import CoreData
 
 struct ContentView: View {
     @State var selectedTab = 0
+    @StateObject var refresherWrapper = RefresherWrapper()
     
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -18,7 +19,7 @@ struct ContentView: View {
             }
             .tag(0)
             
-            ReportingView().tabItem {
+            ReportingView(refresherWrapper: refresherWrapper).tabItem {
                 Label("Reporting", systemImage: "list.triangle")
             }
             .tag(1)
@@ -27,6 +28,9 @@ struct ContentView: View {
                 Label("General", systemImage: "gear")
             }
             .tag(2)
+        }
+        .onChange(of: selectedTab) { newValue in
+            refresherWrapper.refresh.toggle()
         }
     }
 }

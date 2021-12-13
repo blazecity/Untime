@@ -16,6 +16,8 @@ struct TaskView: View {
     var editMode = false
     var managedTask: Task?
     @ObservedObject var refresherWrapper: RefresherWrapper = RefresherWrapper()
+    @State var showAlert = false
+    
     
     var body: some View {
         VStack {
@@ -24,8 +26,11 @@ struct TaskView: View {
                     modal.toggle()
                 } saveAction: {
                     let newTask = Task(context: viewContext)
-                    setTaskInfo(mTask: newTask, isNewTask: true)
-                    modal.toggle()
+                    let validationSuccessful = saveTask(mTask: newTask, isNewTask: true)
+                    if validationSuccessful {
+                        modal.toggle()
+                        refresherWrapper.refresh.toggle()
+                    }
                 }
             }
             
@@ -37,13 +42,22 @@ struct TaskView: View {
         }
         .onDisappear {
             if editMode {
-                setTaskInfo(mTask: managedTask!)
-                refresherWrapper.refresh.toggle()
+                let validationSuccessful = saveTask(mTask: managedTask!)
+                if validationSuccessful {
+                    refresherWrapper.refresh.toggle()
+                } else {
+                    resetTask(mTask: managedTask!)
+                }
             }
         }
     }
     
-    func setTaskInfo(mTask: Task, isNewTask: Bool = false) {
+    func saveTask(mTask: Task, isNewTask: Bool = false) -> Bool {
+        guard StringValidator.validate(str: task.description) else {
+            showAlert = true
+            return false
+        }
+        
         do {
             let cal = Calendar.current
             let minutes = cal.component(.minute, from: task.time)
@@ -63,7 +77,14 @@ struct TaskView: View {
             try viewContext.save()
         } catch {
             print(error.localizedDescription)
+            return false
         }
+        
+        return true
+    }
+    
+    func resetTask(mTask: Task) {
+        task.description = mTask.description
     }
 }
 

@@ -1,15 +1,11 @@
-//
-//  ProjectsView.swift
-//  TrackYourTime
-//
-//  Created by Jan Baumann on 05.12.21.
-//
-
 import SwiftUI
 import CoreData
 
+/// ProjectsView represents the first tab with the overview of all projects.
 struct ProjectsView: View {
+    @Environment(\.colorScheme) var colorScheme
     @Environment(\.managedObjectContext) private var viewContext
+    
     @State var modal = false
     
     @FetchRequest(entity: Project.entity(), sortDescriptors: [])
@@ -18,6 +14,7 @@ struct ProjectsView: View {
     @FetchRequest(entity: Tag.entity(), sortDescriptors: [])
     var tags: FetchedResults<Tag>
     
+    @StateObject var refresherWrapper = RefresherWrapper()
     @State var selectedProjectStatus = 1
     
     var body: some View {
@@ -37,7 +34,7 @@ struct ProjectsView: View {
                             
                             NavigationLink(destination: ProjectView(project: projectModel, modal: $modal, selectedTags: SelectedTagWrapper.getCollectionFromFetchingData(tags: tags, selectedTags: project.tags!), editMode: true, managedProject: project))
                             {
-                                ProjectItemView(passedProject: projectModel, managedProject: project)
+                                ProjectItemView(passedProject: projectModel, managedProject: project, refresherWrapper: refresherWrapper)
                             }
                             .isDetailLink(false)
                             .buttonStyle(.plain)
@@ -64,7 +61,7 @@ struct ProjectsView: View {
                         }
                     )
                 }
-                .background(CustomColor(rgb: [248, 248, 248], opacity: 1))
+                .background(colorScheme == .dark ? CustomColor(rgb: [50, 50, 50], opacity: 1) : CustomColor(rgb: [248, 248, 248], opacity: 1))
             }
         }
     }

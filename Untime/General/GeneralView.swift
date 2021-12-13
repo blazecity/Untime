@@ -1,14 +1,7 @@
-//
-//  GeneralView.swift
-//  TrackYourTime
-//
-//  Created by Jan Baumann on 08.12.21.
-//
-
 import SwiftUI
 
+/// GenerelView represents the third tab with generel settings for the app.
 struct GeneralView: View {
-    
     
     var body: some View {
         NavigationView {

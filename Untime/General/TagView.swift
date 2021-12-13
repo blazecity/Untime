@@ -24,8 +24,10 @@ struct TagView: View {
                     modal.toggle()
                 } saveAction: {
                     let newTag = Tag(context: viewContext)
-                    setTagInfo(mTag: newTag)
-                    modal.toggle()
+                    let validationSuccessful = saveTag(mTag: newTag)
+                    if validationSuccessful {
+                        modal.toggle()
+                    }
                 }
             }
             
@@ -47,28 +49,36 @@ struct TagView: View {
         }
         .onDisappear {
             if editMode {
-                setTagInfo(mTag: managedTag!)
+                let validationSuccessful = saveTag(mTag: managedTag!)
+                if !validationSuccessful {
+                    resetTag(mTag: managedTag!)
+                }
             }
         }
     }
     
-    func setTagInfo(mTag: Tag) {
-        let tagName = tag.tag.trimmingCharacters(in: .whitespaces)
-        guard tagName.split(separator: " ").count != 0 else {
+    func saveTag(mTag: Tag) -> Bool {
+        guard StringValidator.validate(str: tag.tag) else {
             showAlert = true
-            return
+            return false
         }
         let newColor = ColorConverter.convertToTColor(tag.color, viewContext: viewContext)
         let newFontColor = ColorConverter.convertToTColor(tag.fontColor, viewContext: viewContext)
         do {
-            
             mTag.name = tag.tag
             mTag.color = newColor
             mTag.fontColor = newFontColor
             try viewContext.save()
         } catch {
             print(error.localizedDescription)
+            return false
         }
+        
+        return true
+    }
+    
+    func resetTag(mTag: Tag) {
+        tag.tag = mTag.name!
     }
 }
 

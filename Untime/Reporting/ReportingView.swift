@@ -14,6 +14,7 @@ struct ReportingView: View {
     @State private var byDateChecked = true
     @State private var selectionTagProject = 0
     @State private var selectionDate = 0
+    @StateObject var refresherWrapper: RefresherWrapper
     
     var body: some View {
         NavigationView() {
@@ -68,7 +69,7 @@ struct ReportingView: View {
     func fetchTasks() -> [Task] {
         do {
             let fetchRequest : NSFetchRequest<Task> = Task.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "isFinished = 1")
+            fetchRequest.predicate = NSPredicate(format: "isFinished = 1 and project.active = 1")
             fetchRequest.returnsObjectsAsFaults = false
             let fetchedTasks = try viewContext.fetch(fetchRequest)
             return fetchedTasks
@@ -94,6 +95,6 @@ struct ReportingView: View {
 
 struct ReportingView_Previews: PreviewProvider {
     static var previews: some View {
-        ReportingView()
+        ReportingView(refresherWrapper: RefresherWrapper())
     }
 }

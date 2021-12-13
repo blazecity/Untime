@@ -18,10 +18,10 @@ struct SingleTagSelectionView: View {
                 Image(systemName: "checkmark")
             }
         }
-        .background(Color.white)
         .onTapGesture {
             selectedTagWrapper.isSelected.toggle()
         }
+        .background(Color.clear)
     }
 }
 
