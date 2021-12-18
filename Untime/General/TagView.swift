@@ -1,6 +1,6 @@
 //
 //  TagAddView.swift.swift
-//  TrackYourTime
+//  Untime
 //
 //  Created by Jan Baumann on 08.12.21.
 //
@@ -32,16 +32,16 @@ struct TagView: View {
             }
             
             Form {
-                TextField("Tag name", text: $tag.tag, prompt: Text("Tag name"))
+                TextField(String(localized: "label_txt_field_tag_name"), text: $tag.tag, prompt: Text(String(localized: "label_txt_field_tag_name")))
                 
                 ColorPicker(selection: $tag.color) {
-                    Text("Background color")
+                    Text(String(localized: "label_tag_background_color"))
                 }
                 ColorPicker(selection: $tag.fontColor) {
-                    Text("Font color")
+                    Text(String(localized: "label_tag_font_color"))
                 }
             }
-            .alert("Please enter a tag name", isPresented: $showAlert) {
+            .alert(String(localized: "validation_message"), isPresented: $showAlert) {
                 Button("Ok", role: .cancel) {
                     
                 }

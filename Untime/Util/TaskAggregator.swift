@@ -1,6 +1,6 @@
 //
 //  TaskAggregator.swift
-//  TrackYourTime
+//  Untime
 //
 //  Created by Jan Baumann on 11.12.21.
 //
@@ -18,10 +18,6 @@ enum AggregationSelector: Int {
     case tag
 }
 
-protocol Summable {
-    
-}
-
 class TaskAggregator {
     private var data: [Task]
     
@@ -35,7 +31,9 @@ class TaskAggregator {
         case .first:
             let m = mapTasksByDate(tasks: data)
             for (subCollKey, subCollValue) in m {
+                if subCollValue.isEmpty { continue }
                 let reducedValue = reduce(subCollection: subCollValue, to: aggregationSelector)
+                if reducedValue.isEmpty { continue }
                 map[subCollKey] = reducedValue
             }
             break
@@ -43,7 +41,9 @@ class TaskAggregator {
         case .second:
             let m = mapTask(tasks: data, by: aggregationSelector)
             for (subCollKey, subCollValue) in m {
+                if subCollValue.isEmpty { continue }
                 let reducedValue = reduceToDate(subCollection: subCollValue)
+                if reducedValue.isEmpty { continue }
                 map[subCollKey] = reducedValue
             }
             break
@@ -51,7 +51,9 @@ class TaskAggregator {
         case .none:
             let m = mapTask(tasks: data, by: aggregationSelector)
             for (subCollKey, subCollValue) in m {
+                if subCollValue.isEmpty { continue }
                 let reducedValue = [subCollKey: reduceDirectly(subCollection: subCollValue)]
+                if reducedValue.isEmpty { continue }
                 map[subCollKey] = reducedValue
             }
             break
@@ -118,6 +120,9 @@ class TaskAggregator {
         case .tag:
             for task in tasks {
                 let tags = task.project!.tags!
+                if tags.count == 0 {
+                    continue
+                }
                 for tag in tags {
                     let t = tag as! Tag
                     if var arr = map[t.name!] {
@@ -152,6 +157,9 @@ class TaskAggregator {
         case .tag:
             for task in subCollection {
                 let tags = task.project!.tags!
+                if tags.count == 0 {
+                    continue
+                }
                 let taskHours = calcHours(seconds: task.seconds)
                 for tag in tags {
                     let t = tag as! Tag
@@ -163,19 +171,6 @@ class TaskAggregator {
                 }
             }
             break
-        }
-        return map
-    }
-    
-    private func getTasksByDate() -> [Date: [Task]] {
-        var map: [Date: [Task]] = [:]
-        for task in self.data {
-            let collection = map[task.date!]
-            guard var col = collection else {
-                map[task.date!] = [task]
-                continue
-            }
-            col.append(task)
         }
         return map
     }

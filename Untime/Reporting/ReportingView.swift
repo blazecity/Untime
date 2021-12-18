@@ -1,6 +1,6 @@
 //
 //  ReportingView.swift
-//  TrackYourTime
+//  Untime
 //
 //  Created by Jan Baumann on 06.12.21.
 //
@@ -14,41 +14,50 @@ struct ReportingView: View {
     @State private var byDateChecked = true
     @State private var selectionTagProject = 0
     @State private var selectionDate = 0
+    @State private var fromDate = Date()
+    @State private var toDate = Date()
+    @State private var showAlert = false
     @StateObject var refresherWrapper: RefresherWrapper
+    
+    @FetchRequest(entity: Task.entity(), sortDescriptors: [], predicate: NSPredicate(format: "isFinished = 1 and project.active = 1"))
+    var tasks: FetchedResults<Task>
     
     var body: some View {
         NavigationView() {
             VStack {
                 HStack(alignment: .top) {
                     VStack {
-                        Text("Date level").bold()
+                        Text(String(localized: "title_date_aggregator")).bold()
                         Picker("Date aggregation", selection: $selectionDate) {
-                            Text("First").tag(0)
-                            Text("Second").tag(1)
-                            Text("None").tag(2)
+                            Text(String(localized: "date_level_first")).tag(0)
+                            Text(String(localized: "date_level_second")).tag(1)
+                            Text(String(localized: "date_level_none")).tag(2)
                         }
                         .pickerStyle(.segmented)
                     }
                     
                     VStack {
-                        Text("Aggregate by").bold()
+                        Text(String(localized: "title_aggregate")).bold()
                         Picker("Aggregation by", selection: $selectionTagProject) {
-                            Text("Project").tag(0)
-                            Text("Tag").tag(1)
+                            Text(String(localized: "aggr_option_project")).tag(0)
+                            Text(String(localized: "aggr_option_tag")).tag(1)
                         }
                         .pickerStyle(.segmented)
                     }
                 }
                 .padding()
                 
-                let taskAggregator = TaskAggregator(data: fetchTasks())
+                let taskAggregator = TaskAggregator(data: Array(tasks
+                                                               ))
                 let aggregatedTasks = taskAggregator.aggregate(dateSelectorLevel: DateSelectorLevel(rawValue: selectionDate)!, aggregationSelector: AggregationSelector(rawValue: selectionTagProject)!)
-                let keys: [String] = Array(aggregatedTasks.keys).sorted {$0.localizedStandardCompare($1) == .orderedDescending}
-            
+                let keys: [String] =  selectionDate == 0 ? Formatter.sortDateStrings(dateStrings: Array(aggregatedTasks.keys)) : Array(aggregatedTasks.keys)
+                
                 List {
                     ForEach(keys, id: \.self) { key in
                         let value = aggregatedTasks[key]!
-                        let subKeys = Array(value.keys).sorted {$0.localizedStandardCompare($1) == .orderedDescending}
+                        
+                        let subKeys = selectionDate == 1 ? Formatter.sortDateStrings(dateStrings: Array(value.keys)) : Array(value.keys)
+                        
                         Section(key) {
                             ForEach(subKeys, id: \.self) { subKey in
                                 HStack {
@@ -61,35 +70,15 @@ struct ReportingView: View {
                     }
                 }
             }
-            .navigationBarTitle("Reporting")
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitle(String(localized: "tab_reporting_title"))
+            //.navigationBarTitleDisplayMode(.inline)
         }
     }
     
-    func fetchTasks() -> [Task] {
-        do {
-            let fetchRequest : NSFetchRequest<Task> = Task.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "isFinished = 1 and project.active = 1")
-            fetchRequest.returnsObjectsAsFaults = false
-            let fetchedTasks = try viewContext.fetch(fetchRequest)
-            return fetchedTasks
-        } catch {
-            print ("fetch task failed", error)
+    func validateDate() {
+        if fromDate > toDate {
+            showAlert = true
         }
-        return []
-    }
-    
-    func fetchTags() -> [Tag] {
-        print("executing fetching tags")
-        do {
-            let fetchRequest : NSFetchRequest<Tag> = Tag.fetchRequest()
-            fetchRequest.returnsObjectsAsFaults = false
-            let fetchedTags = try viewContext.fetch(fetchRequest)
-            return fetchedTags
-        } catch {
-            print ("fetch tags failed", error)
-        }
-        return []
     }
 }
 

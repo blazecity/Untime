@@ -1,0 +1,51 @@
+// General
+"save_button" = "Save";
+"cancel_button" = "Cancel";
+
+// TabView
+"tab_projects_title" = "Projects";
+"tab_reporting_title" = "Reporting";
+"tab_general_title" = "General";
+
+// Projects
+"picker_option_active_projects" = "Active projects";
+"picker_option_archived_projects" = "Archive";
+"add_project_title" = "Add new project";
+
+// Add/edit project
+"section_title_general_info" = "General info";
+"label_txt_field_project_name" = "Project name";
+"label_txt_field_project_id" = "Project ID";
+"section_title_desc" = "Description";
+"section_title_tags" = "Tags";
+"section_title_tasks" = "Tasks";
+"button_delete_project" = "Delete project";
+"button_archive_project" = "Archive project";
+"button_reactivate_project" = "Reactivate project";
+"project_validation_text" = "Please fill out all text fields.";
+
+// Task view
+"add_complete_task_title" = "Add complete task";
+"add_new_task_title" = "Add fresh timer";
+"label_task_desc" = "Description";
+"label_task_date" = "Date";
+"label_task_time" = "Time";
+
+// Reporting view
+"title_date_aggregator" = "Date level";
+"date_level_first" = "First";
+"date_level_second" = "Second";
+"date_level_none" = "None";
+"title_aggregate" = "Aggregate by";
+"aggr_option_project" = "Project";
+"aggr_option_tag" = "Tag";
+"from_date_label" = "From";
+"to_date_label" = "To";
+
+// General view
+"list_title_tags" = "Tags";
+"add_new_tag_title" = "Add new tag";
+"label_txt_field_tag_name" = "Tag name";
+"label_tag_background_color" = "Background color";
+"label_tag_font_color" = "Font color";
+"validation_message" = "Please enter a tag name";

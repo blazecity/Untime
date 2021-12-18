@@ -1,6 +1,6 @@
 //
 //  CancelSaveView.swift
-//  TrackYourTime
+//  Untime
 //
 //  Created by Jan Baumann on 08.12.21.
 //
@@ -17,7 +17,7 @@ struct CancelSaveView: View {
             Button {
                 cancelAction()
             } label: {
-                Text("Cancel").bold()
+                Text(String(localized: "cancel_button")).bold()
             }.buttonStyle(BorderlessButtonStyle())
             if title != "" {
                 Spacer()
@@ -29,7 +29,7 @@ struct CancelSaveView: View {
             Button {
                 saveAction()
             } label: {
-                Text("Save").bold()
+                Text(String(localized: "save_button")).bold()
             }.buttonStyle(BorderlessButtonStyle())
         }.padding()
     }

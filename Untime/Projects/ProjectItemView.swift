@@ -1,6 +1,6 @@
 //
 //  ProjectsViewItem.swift
-//  TrackYourTime
+//  Untime
 //
 //  Created by Jan Baumann on 05.12.21.
 //
@@ -30,7 +30,7 @@ struct ProjectItemView: View {
     @State var trackers: [TaskModel] = []
     @State var modalFreshTimer = false
     @State var modalCompletedTask = false
-    @StateObject var refresherWrapper: RefresherWrapper
+    @StateObject var refresherWrapper = RefresherWrapper()
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
@@ -84,7 +84,7 @@ struct ProjectItemView: View {
                 .sheet(isPresented: $modalCompletedTask) {
                     let taskModel = TaskModel(isFinished: true)
                     let managedTask = Task(context: viewContext)
-                    TaskView(title: "Add complete task", modal: $modalCompletedTask, task: taskModel, managedProject: managedProject, managedTask: managedTask, refresherWrapper: refresherWrapper)
+                    TaskView(title: String(localized: "add_complete_task_title"), modal: $modalCompletedTask, task: taskModel, managedProject: managedProject, managedTask: managedTask, refresherWrapper: refresherWrapper)
                 }
 
                 Button(action: {
@@ -96,7 +96,7 @@ struct ProjectItemView: View {
                 }
                 .sheet(isPresented: $modalFreshTimer) {
                     let taskModel = TaskModel()
-                    TaskView(title: "Add fresh timer", modal: $modalFreshTimer, task: taskModel, managedProject: managedProject, refresherWrapper: refresherWrapper)
+                    TaskView(title: String(localized: "add_new_task_title"), modal: $modalFreshTimer, task: taskModel, managedProject: managedProject, refresherWrapper: refresherWrapper)
                 }
             }
             .padding(.trailing, 35)
@@ -105,11 +105,13 @@ struct ProjectItemView: View {
             .offset(x: 0, y: 20)
         }
         .shadow(color: Color.black.opacity(0.15), radius: 5, x: 0, y: 0)
-        .padding(EdgeInsets(top: 30, leading: 10, bottom: 0, trailing: 10))
+        .padding(EdgeInsets(top: 30, leading: 10, bottom: 30, trailing: 10))
     }
 }
 
 struct ProjectsViewItem_Previews: PreviewProvider {
+    @Environment(\.managedObjectContext) static private var viewContext
+    
     static var previews: some View {
         ProjectItemView(passedProject: ProjectModel(projectTitle: "Fondssparplan",
                                                      tags: [
@@ -119,6 +121,6 @@ struct ProjectsViewItem_Previews: PreviewProvider {
                                                         TaskModel(description: "Hello")
                                                      ],
                                                      projectId: "PI-414",
-                                                    description: "Fondssparplan LUKB"), managedProject: Project(), refresherWrapper: RefresherWrapper())
+                                                    description: "Fondssparplan LUKB"), managedProject: Project(context: viewContext), refresherWrapper: RefresherWrapper())
     }
 }

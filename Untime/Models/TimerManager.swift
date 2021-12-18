@@ -1,6 +1,6 @@
 //
 //  TimerManager.swift
-//  TrackYourTime
+//  Untime
 //
 //  Created by Jan Baumann on 06.12.21.
 //

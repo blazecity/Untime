@@ -1,6 +1,6 @@
 //
 //  Tag+CoreDataProperties.swift
-//  TrackYourTime
+//  Untime
 //
 //  Created by Jan Baumann on 08.12.21.
 //
@@ -39,8 +39,4 @@ extension Tag {
 
 extension Tag : Identifiable {
 
-}
-
-extension Tag : Summable {
-    
 }

@@ -1,0 +1,51 @@
+// General
+"save_button" = "Speichern";
+"cancel_button" = "Abbrechen";
+
+// TabView
+"tab_projects_title" = "Projekte";
+"tab_reporting_title" = "Reporting";
+"tab_general_title" = "Allgemein";
+
+// Projects
+"picker_option_active_projects" = "Aktive Projekte";
+"picker_option_archived_projects" = "Archiv";
+"add_project_title" = "Neues Projekt hinzufügen";
+
+// Add/edit project
+"section_title_general_info" = "Allgemeine Informationen";
+"label_txt_field_project_name" = "Name des Projekts";
+"label_txt_field_project_id" = "Project ID";
+"section_title_desc" = "Beschreibung";
+"section_title_tags" = "Tags";
+"section_title_tasks" = "Tasks";
+"button_delete_project" = "Projekt löschen";
+"button_archive_project" = "Projekt archivieren";
+"button_reactivate_project" = "Projekt reaktivieren";
+"project_validation_text" = "Bitte füllen Sie alle Textfelder aus.";
+
+// Task view
+"add_complete_task_title" = "Abgeschlossener Task";
+"add_new_task_title" = "Neuer Timer";
+"label_task_desc" = "Beschreibung";
+"label_task_date" = "Datum";
+"label_task_time" = "Geleistete Zeit";
+
+// Reporting view
+"title_date_aggregator" = "Datumslevel";
+"date_level_first" = "Primär";
+"date_level_second" = "Sekundär";
+"date_level_none" = "Keines";
+"title_aggregate" = "Zusammenfassen nach";
+"aggr_option_project" = "Projekt";
+"aggr_option_tag" = "Tag";
+"from_date_label" = "Von";
+"to_date_label" = "Bis";
+
+// General view
+"list_title_tags" = "Tags";
+"add_new_tag_title" = "Neues Tag hinzufügen";
+"label_txt_field_tag_name" = "Name des Tags";
+"label_tag_background_color" = "Hintergrundfarbe";
+"label_tag_font_color" = "Schriftfarbe";
+"validation_message" = "Bitte Name des Tags eingeben";

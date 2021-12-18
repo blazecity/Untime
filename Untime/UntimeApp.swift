@@ -1,6 +1,6 @@
 //
-//  TrackYourTimeApp.swift
-//  TrackYourTime
+//  UntimeApp.swift
+//  Untime
 //
 //  Created by Jan Baumann on 28.11.21.
 //

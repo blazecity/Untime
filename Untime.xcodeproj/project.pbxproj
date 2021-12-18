@@ -26,11 +26,11 @@
 		3A4E58E627633CDE0064A5BD /* TaskCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4E58E527633CDE0064A5BD /* TaskCardView.swift */; };
 		3A4E58EA276425690064A5BD /* TaskAggregator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4E58E9276425690064A5BD /* TaskAggregator.swift */; };
 		3A779F882767E53500CFD5CE /* StringValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A779F872767E53500CFD5CE /* StringValidator.swift */; };
+		3A779F8B276A0EB600CFD5CE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A779F8D276A0EB600CFD5CE /* Localizable.strings */; };
 		3A989D99275411920055FBAA /* UntimeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A989D98275411920055FBAA /* UntimeApp.swift */; };
 		3A989D9B275411920055FBAA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A989D9A275411920055FBAA /* ContentView.swift */; };
 		3A989D9D275411930055FBAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A989D9C275411930055FBAA /* Assets.xcassets */; };
 		3A989DA0275411930055FBAA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A989D9F275411930055FBAA /* Preview Assets.xcassets */; };
-		3A989DAF275411930055FBAA /* TrackYourTimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A989DAE275411930055FBAA /* TrackYourTimeTests.swift */; };
 		3AC89E2A27601DCD0069ED57 /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC89E2927601DCD0069ED57 /* ProjectView.swift */; };
 		3AC89E67276023620069ED57 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC89E66276023620069ED57 /* Persistence.swift */; };
 		3AC89E6A276031730069ED57 /* GeneralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC89E69276031730069ED57 /* GeneralView.swift */; };
@@ -52,16 +52,6 @@
 		3AF23F23275C344A00772D8B /* ProjectItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF23F22275C344A00772D8B /* ProjectItemView.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		3A989DAB275411930055FBAA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3A989D8D275411920055FBAA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3A989D94275411920055FBAA;
-			remoteInfo = TrackYourTime;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		3A35E58827664ACA00B2C80C /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		3A4CB0CB275CE57B00B8FA2E /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
@@ -82,13 +72,13 @@
 		3A4E58E527633CDE0064A5BD /* TaskCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCardView.swift; sourceTree = "<group>"; };
 		3A4E58E9276425690064A5BD /* TaskAggregator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskAggregator.swift; sourceTree = "<group>"; };
 		3A779F872767E53500CFD5CE /* StringValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringValidator.swift; sourceTree = "<group>"; };
+		3A779F8C276A0EB600CFD5CE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3A779F8E276A0EBD00CFD5CE /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3A989D95275411920055FBAA /* Untime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Untime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A989D98275411920055FBAA /* UntimeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UntimeApp.swift; sourceTree = "<group>"; };
 		3A989D9A275411920055FBAA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3A989D9C275411930055FBAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A989D9F275411930055FBAA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		3A989DAA275411930055FBAA /* UntimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UntimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A989DAE275411930055FBAA /* TrackYourTimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackYourTimeTests.swift; sourceTree = "<group>"; };
 		3AC89E2927601DCD0069ED57 /* ProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
 		3AC89E66276023620069ED57 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		3AC89E69276031730069ED57 /* GeneralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralView.swift; sourceTree = "<group>"; };
@@ -112,13 +102,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		3A989D92275411920055FBAA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3A989DA7275411930055FBAA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -200,8 +183,8 @@
 		3A989D8C275411920055FBAA = {
 			isa = PBXGroup;
 			children = (
+				3A779F8D276A0EB600CFD5CE /* Localizable.strings */,
 				3A989D97275411920055FBAA /* Untime */,
-				3A989DAD275411930055FBAA /* UntimeTests */,
 				3A989D96275411920055FBAA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -210,7 +193,6 @@
 			isa = PBXGroup;
 			children = (
 				3A989D95275411920055FBAA /* Untime.app */,
-				3A989DAA275411930055FBAA /* UntimeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -239,14 +221,6 @@
 				3A989D9F275411930055FBAA /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		3A989DAD275411930055FBAA /* UntimeTests */ = {
-			isa = PBXGroup;
-			children = (
-				3A989DAE275411930055FBAA /* TrackYourTimeTests.swift */,
-			);
-			path = UntimeTests;
 			sourceTree = "<group>";
 		};
 		3AC89E68276031600069ED57 /* General */ = {
@@ -279,24 +253,6 @@
 			productReference = 3A989D95275411920055FBAA /* Untime.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3A989DA9275411930055FBAA /* UntimeTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3A989DC1275411930055FBAA /* Build configuration list for PBXNativeTarget "UntimeTests" */;
-			buildPhases = (
-				3A989DA6275411930055FBAA /* Sources */,
-				3A989DA7275411930055FBAA /* Frameworks */,
-				3A989DA8275411930055FBAA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				3A989DAC275411930055FBAA /* PBXTargetDependency */,
-			);
-			name = UntimeTests;
-			productName = TrackYourTimeTests;
-			productReference = 3A989DAA275411930055FBAA /* UntimeTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -310,10 +266,6 @@
 					3A989D94275411920055FBAA = {
 						CreatedOnToolsVersion = 13.0;
 					};
-					3A989DA9275411930055FBAA = {
-						CreatedOnToolsVersion = 13.0;
-						TestTargetID = 3A989D94275411920055FBAA;
-					};
 				};
 			};
 			buildConfigurationList = 3A989D90275411920055FBAA /* Build configuration list for PBXProject "Untime" */;
@@ -323,6 +275,7 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = 3A989D8C275411920055FBAA;
 			productRefGroup = 3A989D96275411920055FBAA /* Products */;
@@ -330,7 +283,6 @@
 			projectRoot = "";
 			targets = (
 				3A989D94275411920055FBAA /* Untime */,
-				3A989DA9275411930055FBAA /* UntimeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -341,14 +293,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A989DA0275411930055FBAA /* Preview Assets.xcassets in Resources */,
+				3A779F8B276A0EB600CFD5CE /* Localizable.strings in Resources */,
 				3A989D9D275411930055FBAA /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3A989DA8275411930055FBAA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,23 +348,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3A989DA6275411930055FBAA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3A989DAF275411930055FBAA /* TrackYourTimeTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		3A989DAC275411930055FBAA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3A989D94275411920055FBAA /* Untime */;
-			targetProxy = 3A989DAB275411930055FBAA /* PBXContainerItemProxy */;
+/* Begin PBXVariantGroup section */
+		3A779F8D276A0EB600CFD5CE /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3A779F8C276A0EB600CFD5CE /* en */,
+				3A779F8E276A0EBD00CFD5CE /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
 		};
-/* End PBXTargetDependency section */
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		3A989DBC275411930055FBAA /* Debug */ = {
@@ -601,58 +543,6 @@
 			};
 			name = Release;
 		};
-		3A989DC2275411930055FBAA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 73V4455UZ3;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ch.hslu.ios.TrackYourTimeTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Untime.app/Untime";
-			};
-			name = Debug;
-		};
-		3A989DC3275411930055FBAA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 73V4455UZ3;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ch.hslu.ios.TrackYourTimeTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Untime.app/Untime";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -670,15 +560,6 @@
 			buildConfigurations = (
 				3A989DBF275411930055FBAA /* Debug */,
 				3A989DC0275411930055FBAA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3A989DC1275411930055FBAA /* Build configuration list for PBXNativeTarget "UntimeTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3A989DC2275411930055FBAA /* Debug */,
-				3A989DC3275411930055FBAA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

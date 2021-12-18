@@ -1,6 +1,6 @@
 //
 //  TaskAddView.swift
-//  TrackYourTime
+//  Untime
 //
 //  Created by Jan Baumann on 08.12.21.
 //
@@ -32,12 +32,17 @@ struct TaskView: View {
                         refresherWrapper.refresh.toggle()
                     }
                 }
+                .alert(String(localized: "project_validation_text"), isPresented: $showAlert) {
+                    Button("Ok", role: .cancel) {
+                        
+                    }
+                }
             }
             
             Form {
-                TextField("Description", text: $task.description, prompt: Text("Description"))
-                DatePicker("Date", selection: $task.date, displayedComponents: .date)
-                DatePicker("Time", selection: $task.time, displayedComponents: .hourAndMinute)
+                TextField("Description", text: $task.description, prompt: Text(String(localized: "label_task_desc")))
+                DatePicker(String(localized: "label_task_date"), selection: $task.date, displayedComponents: .date)
+                DatePicker(String(localized: "label_task_time"), selection: $task.time, displayedComponents: .hourAndMinute)
             }
         }
         .onDisappear {

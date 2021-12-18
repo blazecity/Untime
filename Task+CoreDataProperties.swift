@@ -1,6 +1,6 @@
 //
 //  Task+CoreDataProperties.swift
-//  TrackYourTime
+//  Untime
 //
 //  Created by Jan Baumann on 08.12.21.
 //

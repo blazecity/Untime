@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  TrackYourTime
+//  Untime
 //
 //  Created by Jan Baumann on 28.11.21.
 //
@@ -15,17 +15,17 @@ struct ContentView: View {
     var body: some View {
         TabView(selection: $selectedTab) {
             ProjectsView().tabItem {
-                Label("Projects", systemImage: "chevron.right.square")
+                Label(String(localized: "tab_projects_title"), systemImage: "chevron.right.square")
             }
             .tag(0)
             
             ReportingView(refresherWrapper: refresherWrapper).tabItem {
-                Label("Reporting", systemImage: "list.triangle")
+                Label(String(localized: "tab_reporting_title"), systemImage: "list.triangle")
             }
             .tag(1)
             
             GeneralView().tabItem {
-                Label("General", systemImage: "gear")
+                Label(String(localized: "tab_general_title"), systemImage: "gear")
             }
             .tag(2)
         }

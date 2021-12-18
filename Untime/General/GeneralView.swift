@@ -6,12 +6,12 @@ struct GeneralView: View {
     var body: some View {
         NavigationView {
             Form {
-                NavigationLink("Tags") {
+                NavigationLink(String(localized: "list_title_tags")) {
                     TagListView()
                 }
             }
-            .navigationBarTitle("General")
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitle(String(localized: "tab_general_title"))
+            //.navigationBarTitleDisplayMode(.inline)
             
         }
         

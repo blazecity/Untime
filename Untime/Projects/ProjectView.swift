@@ -1,6 +1,6 @@
 //
 //  ProjectAddView.swift
-//  TrackYourTime
+//  Untime
 //
 //  Created by Jan Baumann on 07.12.21.
 //
@@ -17,7 +17,7 @@ struct ProjectView: View {
     var selectedTags: [SelectedTagWrapper]
     var editMode = false
     var managedProject: Project?
-    @StateObject var refresherWrapper = RefresherWrapper()
+    @ObservedObject var refresherWrapper = RefresherWrapper()
     @State var showAlert = false
     
     var body: some View {
@@ -29,10 +29,11 @@ struct ProjectView: View {
                     let newProject = Project(context: viewContext)
                     let validationSuccessful = saveProject(mProject: newProject)
                     if validationSuccessful {
+                        refresherWrapper.refresh.toggle()
                         modal.toggle()
                     }
                 }
-                .alert("Please fill out all text fields", isPresented: $showAlert) {
+                .alert(String(localized: "project_validation_text"), isPresented: $showAlert) {
                     Button("Ok", role: .cancel) {
                         
                     }
@@ -40,22 +41,22 @@ struct ProjectView: View {
             }
             
             Form {
-                Section("General info") {
-                    TextField("Name", text: $project.projectTitle)
-                    TextField("Project ID", text: $project.projectId)
+                Section(String(localized: "section_title_general_info")) {
+                    TextField(String(localized: "label_txt_field_project_name"), text: $project.projectTitle)
+                    TextField(String(localized: "label_txt_field_project_id"), text: $project.projectId)
                 }
                 .onTapGesture {
                     self.dismissKeyboard()
                 }
                 
-                Section("Description") {
+                Section(String(localized: "section_title_desc")) {
                     TextEditor(text: $project.description)
                 }
                 .onTapGesture {
                     self.dismissKeyboard()
                 }
                 
-                Section("Tags") {
+                Section(String(localized: "section_title_tags")) {
                     List {
                         ForEach(selectedTags) {tag in
                             SingleTagSelectionView(selectedTagWrapper: tag)
@@ -68,29 +69,27 @@ struct ProjectView: View {
 
                 if (editMode) {
                     Button {
-                        viewContext.delete(managedProject!)
                         for task in managedProject!.tasks! {
                             viewContext.delete(task as! NSManagedObject)
                         }
+                        viewContext.delete(managedProject!)
                         do {
                             try viewContext.save()
                         } catch {
                             print(error.localizedDescription)
                         }
                     } label: {
-                        Text("Delete project").foregroundColor(.red).bold()
+                        Text(String(localized: "button_delete_project")).foregroundColor(.red).bold()
                     }
                     
                     Button {
-                        refresherWrapper.refresh.toggle()
                         project.active.toggle()
                         
                     } label: {
-                        Text(project.active ? "Archive project" : "Reactivate project").bold()
+                        Text(project.active ? String(localized: "button_archive_project") : String(localized: "button_reactivate_project")).bold()
                     }
-
                     
-                    Section("Tasks") {
+                    Section(String(localized: "section_title_tasks")) {
                         List {
                             let taskList = fetchTasks(mProject: managedProject!)
                             ForEach(taskList) { task in
@@ -188,6 +187,6 @@ struct ProjectAddView_Previews: PreviewProvider {
     @State static var modal = true
     
     static var previews: some View {
-        ProjectView(modal: $modal, selectedTags: [], managedProject: Project())
+        ProjectView(modal: $modal, selectedTags: [], managedProject: Project(), refresherWrapper: RefresherWrapper())
     }
 }

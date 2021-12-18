@@ -1,6 +1,6 @@
 //
 //  TagListView.swift
-//  TrackYourTime
+//  Untime
 //
 //  Created by Jan Baumann on 08.12.21.
 //
@@ -43,10 +43,10 @@ struct TagListView: View {
                     .padding(10)
             })
             .sheet(isPresented: $modal) {
-            TagView(title: "Add new tag", modal: $modal)
+            TagView(title: String(localized: "add_new_tag_title"), modal: $modal)
             }
         )
-        .navigationBarTitle("Tags")
+        .navigationBarTitle(String(localized: "list_title_tags"))
     }
 }
 

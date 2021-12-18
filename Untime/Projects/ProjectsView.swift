@@ -8,33 +8,35 @@ struct ProjectsView: View {
     
     @State var modal = false
     
-    @FetchRequest(entity: Project.entity(), sortDescriptors: [])
-    var projects: FetchedResults<Project>
-    
     @FetchRequest(entity: Tag.entity(), sortDescriptors: [])
     var tags: FetchedResults<Tag>
     
-    @StateObject var refresherWrapper = RefresherWrapper()
+    @FetchRequest(entity: Project.entity(), sortDescriptors: [], predicate: NSPredicate(format: "active = 1"))
+    var activeProjects: FetchedResults<Project>
+    
+    @FetchRequest(entity: Project.entity(), sortDescriptors: [], predicate: NSPredicate(format: "active = 0"))
+    var inactiveProjects: FetchedResults<Project>
+    
     @State var selectedProjectStatus = 1
     
     var body: some View {
         NavigationView() {
             VStack {
                 Picker("Project status", selection: $selectedProjectStatus) {
-                    Text("Active Projects").tag(1)
-                    Text("Archive").tag(0)
+                    Text(String(localized: "picker_option_active_projects")).tag(1)
+                    Text(String(localized: "picker_option_archived_projects")).tag(0)
                 }
                 .pickerStyle(.segmented)
                 .padding()
                 
                 ScrollView {
-                    VStack(alignment: .leading, spacing: 20) {
-                        ForEach(fetchProjects()) {project in
+                    VStack(alignment: .leading, spacing: -5) {
+                        ForEach(selectedProjectStatus == 0 ? inactiveProjects : activeProjects) {project in
                             let projectModel = ProjectModel.convertManagedProject(project: project)
                             
                             NavigationLink(destination: ProjectView(project: projectModel, modal: $modal, selectedTags: SelectedTagWrapper.getCollectionFromFetchingData(tags: tags, selectedTags: project.tags!), editMode: true, managedProject: project))
                             {
-                                ProjectItemView(passedProject: projectModel, managedProject: project, refresherWrapper: refresherWrapper)
+                                ProjectItemView(passedProject: projectModel, managedProject: project)
                             }
                             .isDetailLink(false)
                             .buttonStyle(.plain)
@@ -47,8 +49,8 @@ struct ProjectsView: View {
                           maxHeight: .infinity,
                           alignment: .topLeading
                     )
-                    .navigationBarTitle("Projects")
-                    .navigationBarTitleDisplayMode(.inline)
+                    .navigationBarTitle(String(localized: "tab_projects_title"))
+                    //.navigationBarTitleDisplayMode(.inline)
                     .navigationBarItems(trailing: Button(action: {
                             modal.toggle()
                         },
@@ -57,27 +59,14 @@ struct ProjectsView: View {
                                 .padding(10)
                         })
                         .sheet(isPresented: $modal) {
-                        ProjectView(title: "Add new project", modal: $modal, selectedTags: SelectedTagWrapper.getCollectionFromFetchingData(tags: tags, selectedTags: []))
+                        ProjectView(title: String(localized: "add_project_title"), modal: $modal, selectedTags: SelectedTagWrapper.getCollectionFromFetchingData(tags: tags, selectedTags: []))
                         }
                     )
                 }
-                .background(colorScheme == .dark ? CustomColor(rgb: [50, 50, 50], opacity: 1) : CustomColor(rgb: [248, 248, 248], opacity: 1))
+                .background(colorScheme == .dark ? CustomColor(rgb: [56, 56, 56], opacity: 1) : CustomColor(rgb: [248, 248, 248], opacity: 1))
             }
         }
     }
-    
-    func fetchProjects() -> [Project] {
-        do {
-            let fetchRequest : NSFetchRequest<Project> = Project.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "active = \(selectedProjectStatus)")
-            let fetchedProjects = try viewContext.fetch(fetchRequest)
-            return fetchedProjects
-        } catch {
-            print ("fetch task failed", error)
-        }
-        return []
-    }
-     
 }
 
 struct ProjectsView_Previews: PreviewProvider {
